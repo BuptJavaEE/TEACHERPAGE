@@ -19,8 +19,6 @@ router.post('/',function (req,res,next) {
                     } else {
                         userarrays=ret;
                         console.log("userarrays",userarrays)
-                        console.log(fatherret)
-                        console.log(userarrays)
                         for(var i=0;i<fatherret.authors.length;i++) {
                             for(var j=0;j<userarrays.length;j++){
                                 if(userarrays[j].id===parseInt(fatherret.authors[i])){
@@ -28,7 +26,7 @@ router.post('/',function (req,res,next) {
                                 }
                             }
                         }
-                        console.log("bjjkxhekwqjj",answerdata)
+
                         res.json(answerdata)
                     }
                 })

@@ -28,7 +28,7 @@
                 s[pa[i].split("=")[0]] = unescape(pa[i].split("=")[1]);
             }
             $("#teacherno").val(s.teacherno);
-            document.getElementById("Writeblog").href="http://localhost:9001?name="+s.name;
+            document.getElementById("Writeblog").href="http://10.28.225.233:9001?name="+s.name;
         })
     </script>
 </head>
@@ -42,10 +42,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="http://localhost:8080/BuptJavaEE_war_exploded/pages/Writer/My.jsp">我的</a></li>
+                <li ><a href="http://10.28.225.233:8080/BuptJavaEE_war_exploded/pages/Writer/My.jsp">我的</a></li>
                 <li ><a id="Writeblog" href="" disabled="true">协同协作</a></li>
-                <li ><a href="http://localhost:8080/BuptJavaEE_war_exploded/pages/Writer/Findblog.jsp">查找文章</a></li>
-                <li class="active"><a href="http://localhost:8082" disabled="true">发布任务</a></li>
+                <li ><a href="http://10.28.225.233:8080/BuptJavaEE_war_exploded/pages/Writer/Findblog.jsp">查找文章</a></li>
+                <li class="active"><a href="http://10.28.225.233:8082" disabled="true">发布任务</a></li>
             </ul>
         </div>
     </div>
@@ -92,7 +92,7 @@
 
                 <label class="col-sm-2 control-label" style="color:white;">添加允许参与写作的小组的成员：</label>
                 <%for(var i=0;i<data.users.length;i++){%>
-                <input type="checkbox" checked name="boxes" value="<%=data.users[i].id%>" ><%=data.users[i].nickname%>
+                <input type="checkbox"  name="boxes" value="<%=data.users[i].id%>" ><%=data.users[i].nickname%>
                 <%}%>
 
             </div>

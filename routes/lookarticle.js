@@ -17,9 +17,7 @@ router.get('/showarticle',function (req,res,next) {
                 console.log("查找文章失败！")
             }else{
                 console.log("查找展示文章成功！")
-                data=ret[0]
-                console.log(ret)
-                console.log(data)
+                data=ret[0];
                 res.render("checkarticle",{data:data})
             }
         })

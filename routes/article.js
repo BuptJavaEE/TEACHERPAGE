@@ -42,7 +42,6 @@ router.get('/createarticle',function(req,res,next){
     let teacherno=req.query.teacherno
     console.log("已经进入该方法了！")
     var articlename = req.query.title;
-    console.log(articlename);
     createDoc(startServer,articlename)
 // Create initial document then fire callback
     function createDoc(callback,article) {

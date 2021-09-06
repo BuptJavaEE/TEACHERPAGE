@@ -36,9 +36,8 @@ router.get('/teacherpage',function (req,res,next) {
                             if(err){
                                 console.log("读取用户列表出错了!");
                             }else{
-                                console.log(ret)
+
                                 data.users=ret;
-                                console.log(data)
                                 res.render("teacher",{data:data});
                             }
                         })

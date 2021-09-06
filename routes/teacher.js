@@ -25,7 +25,7 @@ router.post("/submitdata",function (req,res,next) {             //教师添加�
     let groupid=req.body.groupid;
     let thedata=req.body.boxes;
     let groupleader=req.body.userno;
-
+    console.log("hahahahahaha",thedata)
     console.log("thedata的长度是",thedata.length,thedata[0],thedata[1])
     model.connect(function (db,client) {
         db.collection("user").find({username:groupleader}).toArray(function (err,ret) {
@@ -33,8 +33,18 @@ router.post("/submitdata",function (req,res,next) {             //教师添加�
                 console.log("出错了");
             }else{
                 groupleader=ret[0].id;
+                console.log("caocaocaocaocao",thedata.length)
+                if(typeof thedata!=="string"){
                 for(var i=0;i<thedata.length;i++){
                     db.collection("group").insertOne({groupid:groupid,groupleader:groupleader,id:parseInt(thedata[i])},function (err) {
+                        if(err){
+                            console.log("插入失败!")
+                        }else{
+                            console.log("插入成功!")
+                        }
+                    })
+                }}else{
+                    db.collection("group").insertOne({groupid:groupid,groupleader:groupleader,id:parseInt(thedata)},function (err) {
                         if(err){
                             console.log("插入失败!")
                         }else{
