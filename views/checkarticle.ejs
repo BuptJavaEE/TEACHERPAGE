@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章展示</title>
+    <script type="text/javascript" src="/echarts.js"></script>
+    <script type="text/javascript" src="/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style-back.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap.css">
+    <!--    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>-->
+    <style>
+        textarea{
+            margin: 50px;
+            /*文字太多可以触发滚动条*/
+            overflow-y: scroll;
+        }
+        input{
+            margin: 50px;
+        }
+        #round
+        {   	border:15px solid transparent;
+            padding:10px 20px;
+            -webkit-border-image:url(border.png) 30 30 round; /* Safari 5 and older */
+            -o-border-image:url(border.png) 30 30 round; /* Opera */
+            border-image:url(border.png) 30 30 round;
+        }
+    </style>
+<!--    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>-->
+
+</head>
+<body>
+<div class="cr cr-top cr-left cr-sticky cr-red">Hello</div>
+<div class="cr cr-top cr-right cr-sticky cr-blue">hi</div>
+<div class="cr cr-bottom cr-left cr-sticky cr-orange">hello there</div>
+<div class="cr cr-bottom cr-right cr-sticky cr-green">hei</div>
+<div style="flex-direction: column">
+    <div class="col-sm-offset-3 col-sm-6">
+        <label class="col-sm-offset-1">文章编号:</label>
+        <input class="form-control" id="round" type="text" value="<%=data.textno%>" disabled="true">
+    </div>
+    <div class="col-sm-offset-3 col-sm-6">
+        <label class="col-sm-offset-1">查看文章:</label>
+        <textarea style="width: 100%;height: 500px" disabled="true"><%=data.content%></textarea>
+    </div>
+    <!--  换行调整样式  -->
+<!--        <br/><br/><br/><br/>-->
+<!--        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+<!--        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+<!--        <br/>                                                               <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+<!--        <br/>                                                               <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<!--        <br/><br/><br/><br/>-->
+    <!--以上 换行很重要    -->
+    <div class="col-sm-offset-2" style="">
+        <div class="chart" style="height: 700px;width: 1000px" id="changes"></div>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="application/javascript">
+
+    var mychart=echarts.init(document.getElementById("changes"));
+    $.ajax({
+        url:"/echarts?textno=<%=data.textno%>",
+        method:"POST",
+        dataType:"json",
+        success: function (data) {
+
+            var option ={
+                title: {
+                    text: '文章写作参与度情况',
+                    left: 'center'
+                },
+                series:{
+                    type:'pie',
+                    data:data,
+                },
+                roseType:'angle',
+                itemStyle: {
+                    normal: {
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(100, 0, 0, 0.5)'
+                    }
+                }
+            };
+            mychart.setOption(option)
+        }
+    })
+
+
+</script>
+
+<!--边框美化-->
+<img src="border.png" />
